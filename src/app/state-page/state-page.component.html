@@ -1,0 +1,11 @@
+<nav>
+  <span class="state_button_container">
+    <button (click)="ShowForms(1)">Tab 1</button>
+    <button (click)="ShowForms(2)">Tab 2</button>
+  </span>
+  <button (click)="SaveData()">Save</button>
+</nav>
+<app-name-and-country-form [hidden]="isHiddenNamesForm"></app-name-and-country-form>
+<app-options-and-email-form [hidden]="isHiddenOptionForm"></app-options-and-email-form>
+<app-zip-code-form [hidden]="isHiddenZipCodeForm"></app-zip-code-form>
+<app-preview-page></app-preview-page>
