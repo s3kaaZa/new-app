@@ -1,1 +1,23 @@
-<p>name-and-country-form works!</p>
+<div class="names_and_country_container">
+  <mat-card class="name_card">
+    <form id="nameForm" [formGroup]="NamesAndCountryForm">
+      <mat-form-field class="form_input name_input" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput name="Name" formControlName="Name" type="text" placeholder="Name" />
+      </mat-form-field>
+      <mat-form-field class="form_input surname_input" appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput name="Surname" formControlName="Surname" type="text" placeholder="Surname" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select country</mat-label>
+        <mat-select formControlName="Country">
+          <mat-option value="Belarus">Belarus</mat-option>
+          <mat-option value="Poland">Poland</mat-option>
+          <mat-option value="Ukraine">Ukraine</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>
+

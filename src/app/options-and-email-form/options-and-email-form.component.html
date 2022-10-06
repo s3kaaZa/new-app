@@ -1,1 +1,17 @@
-<p>options-and-email-form works!</p>
+<div class="options_and_email_container">
+  <mat-card class="options_and_email_form">
+    <form id="emailForm" [formGroup]="EmailAndOptionsForm">
+      <mat-radio-group class="radio_group" formControlName="Option" aria-label="Select an option">
+        <mat-radio-button class="radio_button" value="Option 1">Option 1</mat-radio-button>
+        <mat-radio-button class="radio_button" value="Option 2">Option 2</mat-radio-button>
+        <mat-radio-button class="radio_button" value="Option 3">Option 3</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field class="form_input email_input" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="example@example.com" formControlName="Email" required>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>
+

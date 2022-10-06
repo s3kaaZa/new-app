@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-zip-code-form',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./zip-code-form.component.scss']
 })
 export class ZipCodeFormComponent implements OnInit {
+  ZipCodeForm: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.ZipCodeForm = formBuilder.group({
+      ZipCode: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {
   }

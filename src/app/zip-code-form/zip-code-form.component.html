@@ -1,1 +1,10 @@
-<p>zip-code-form works!</p>
+<div class="zip_code_container">
+  <mat-card class="zip_code_form">
+    <form id="zipCodeForm" [formGroup]="ZipCodeForm">
+      <mat-form-field class="form_input zip_code_input" appearance="fill">
+        <mat-label>Zip Code</mat-label>
+        <input matInput name="zipCode" formControlName="ZipCode" type="number" placeholder="Zip Code" />
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>

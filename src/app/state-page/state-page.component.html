@@ -1,11 +1,22 @@
-<nav>
-  <span class="state_button_container">
-    <button (click)="ShowForms(1)">Tab 1</button>
-    <button (click)="ShowForms(2)">Tab 2</button>
-  </span>
-  <button (click)="SaveData()">Save</button>
-</nav>
-<app-name-and-country-form [hidden]="isHiddenNamesForm"></app-name-and-country-form>
-<app-options-and-email-form [hidden]="isHiddenOptionForm"></app-options-and-email-form>
-<app-zip-code-form [hidden]="isHiddenZipCodeForm"></app-zip-code-form>
-<app-preview-page></app-preview-page>
+<div class="state_page_container">
+  <nav class="header">
+    <span class="header_button_container">
+      <button mat-flat-button color="primary" (click)="ShowForms(1)">Tab 1</button>
+      <button mat-flat-button color="primary" (click)="ShowForms(2)">Tab 2</button>
+    </span>
+    <button mat-flat-button color="accent" (click)="SaveData()">Save</button>
+  </nav>
+  <div class="forms-container">
+    <app-name-and-country-form [hidden]="IsHiddenNamesForm"></app-name-and-country-form>
+    <app-options-and-email-form [hidden]="IsHiddenOptionForm"></app-options-and-email-form>
+    <app-zip-code-form [hidden]="IsHiddenZipCodeForm"></app-zip-code-form>
+    <app-preview-page
+      [name]="UserName"
+      [surname]="UserSurname"
+      [country]="UserCountry"
+      [option]="UserOption"
+      [email]="UserEmail"
+      [zipCode]="UserZipCode">
+    </app-preview-page>
+  </div>
+</div>

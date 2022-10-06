@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-name-and-country-form',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./name-and-country-form.component.scss']
 })
 export class NameAndCountryFormComponent implements OnInit {
+  NamesAndCountryForm: FormGroup;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.NamesAndCountryForm = formBuilder.group({
+      Name: ['', [Validators.required]],
+      Surname: ['', [Validators.required]],
+      Country: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit(): void {
   }
-
 }
