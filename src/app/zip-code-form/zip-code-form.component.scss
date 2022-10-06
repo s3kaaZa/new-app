@@ -1,0 +1,11 @@
+@import "../app.component.scss";
+
+.zip_code_container {
+  .mat-card {
+    background-color: $card-background-color;
+
+    .form_input {
+      width: $control-width;
+    }
+  }
+}

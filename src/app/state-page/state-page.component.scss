@@ -1,1 +1,41 @@
+@import "../app.component.scss";
+
+.state_page_container {
+  width: $app-width;
+  margin: 0 auto;
+  padding: $app-padding;
+  background-color: #DCDCDC;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $form-margin-bottom;
+
+    .header_button_tab {
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .forms_and_preview_container {
+    display: flex;
+    justify-content: space-between;
+
+    .forms_container {
+      display: block;
+      width: $form-width;
+    }
+
+    .preview_container {
+      width: 215px;
+
+      .preview_card {
+        height: 415px;
+      }
+    }
+  }
+}
 

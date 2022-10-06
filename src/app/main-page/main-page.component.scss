@@ -1,0 +1,9 @@
+@import "../app.component.scss";
+
+.main_page_container {
+  width: $app-width;
+  height: 500px;
+  margin: 0 auto;
+  padding: $app-padding;
+  background-color: #DCDCDC;
+}

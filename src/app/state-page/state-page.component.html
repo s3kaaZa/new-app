@@ -1,22 +1,27 @@
 <div class="state_page_container">
   <nav class="header">
     <span class="header_button_container">
-      <button mat-flat-button color="primary" (click)="ShowForms(1)">Tab 1</button>
-      <button mat-flat-button color="primary" (click)="ShowForms(2)">Tab 2</button>
+      <a class="header_button_tab" mat-raised-button href="/" target="_self">Main</a>
+      <button class="header_button_tab" mat-flat-button color="primary" (click)="ShowForms(1)">Tab 1</button>
+      <button class="header_button_tab" mat-flat-button color="primary" (click)="ShowForms(2)">Tab 2</button>
     </span>
     <button mat-flat-button color="accent" (click)="SaveData()">Save</button>
   </nav>
-  <div class="forms-container">
-    <app-name-and-country-form [hidden]="IsHiddenNamesForm"></app-name-and-country-form>
-    <app-options-and-email-form [hidden]="IsHiddenOptionForm"></app-options-and-email-form>
-    <app-zip-code-form [hidden]="IsHiddenZipCodeForm"></app-zip-code-form>
-    <app-preview-page
-      [name]="UserName"
-      [surname]="UserSurname"
-      [country]="UserCountry"
-      [option]="UserOption"
-      [email]="UserEmail"
-      [zipCode]="UserZipCode">
-    </app-preview-page>
+  <div class="forms_and_preview_container">
+    <div class="forms_container">
+      <app-name-and-country-form [hidden]="IsHiddenNamesForm"></app-name-and-country-form>
+      <app-options-and-email-form [hidden]="IsHiddenOptionForm"></app-options-and-email-form>
+      <app-zip-code-form [hidden]="IsHiddenZipCodeForm"></app-zip-code-form>
+    </div>
+    <div class="preview_container">
+      <app-preview-page
+        [name]="UserName"
+        [surname]="UserSurname"
+        [country]="UserCountry"
+        [option]="UserOption"
+        [email]="UserEmail"
+        [zipCode]="UserZipCode">
+      </app-preview-page>
+    </div>
   </div>
 </div>

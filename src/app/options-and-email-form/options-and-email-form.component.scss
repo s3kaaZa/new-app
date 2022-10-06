@@ -1,0 +1,20 @@
+@import "../app.component.scss";
+
+.options_and_email_container {
+  .radio_group {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: .5rem;
+    }
+  }
+
+  .mat-card {
+    background-color: $card-background-color;
+
+    .form_input {
+      width: $control-width;
+    }
+  }
+}

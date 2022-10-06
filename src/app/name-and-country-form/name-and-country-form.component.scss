@@ -1,0 +1,13 @@
+@import "../app.component.scss";
+
+.names_and_country_container {
+  margin-bottom: $form-margin-bottom;
+
+  .mat-card {
+    background-color: $card-background-color;
+
+    .form_input {
+      width: $control-width;
+    }
+  }
+}
