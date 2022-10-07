@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DataService} from "../services/data.service";
-import {NameAndCountryFormComponent} from "../name-and-country-form/name-and-country-form.component";
-import {OptionsAndEmailFormComponent} from "../options-and-email-form/options-and-email-form.component";
-import {ZipCodeFormComponent} from "../zip-code-form/zip-code-form.component";
-import {IUser, IUserViewModel} from "../models/user";
-import {DataTransformService} from "../services/data-transform.service";
-import {FormGroup} from "@angular/forms";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from "../services/data.service";
+import { NameAndCountryFormComponent } from "../name-and-country-form/name-and-country-form.component";
+import { OptionsAndEmailFormComponent } from "../options-and-email-form/options-and-email-form.component";
+import { ZipCodeFormComponent } from "../zip-code-form/zip-code-form.component";
+import { IUser, IUserViewModel } from "../models/user.model";
+import { DataTransformService } from "../services/data-transform.service";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-state-page',

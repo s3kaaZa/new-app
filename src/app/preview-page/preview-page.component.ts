@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IUserViewModel} from "../models/user";
-import {DataService} from "../services/data.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { IUserViewModel } from "../models/user.model";
+import { DataService } from "../services/data.service";
 
 @Component({
   selector: 'app-preview-page',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {IUser, IUserViewModel} from "../models/user";
+import { IUser, IUserViewModel } from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +21,12 @@ export class DataTransformService {
   }
   UserDataFromViewModel(user: IUserViewModel) {
     return {
-      name: user.Name?.trim(),
-      surname: user.Surname?.trim(),
-      country: user.Country?.trim(),
-      option: user.Option?.trim(),
-      email: user.Email?.trim(),
-      zipCode: user.ZipCode || undefined
+      name: user.Name.trim(),
+      surname: user.Surname.trim(),
+      country: user.Country.trim(),
+      option: user.Option.trim(),
+      email: user.Email.trim(),
+      zipCode: user.ZipCode
     }
   }
 }

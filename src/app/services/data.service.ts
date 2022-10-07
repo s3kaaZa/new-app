@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {IUser, IUserViewModel} from "../models/user";
-import {LocalService} from "./local.service";
-import {DataTransformService} from "./data-transform.service";
+import { IUser, IUserViewModel } from "../models/user.model";
+import { LocalService } from "./local.service";
+import { DataTransformService } from "./data-transform.service";
 
 
 @Injectable({
