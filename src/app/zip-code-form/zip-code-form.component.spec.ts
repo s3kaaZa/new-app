@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ZipCodeFormComponent } from './zip-code-form.component';
+import { FormBuilder} from "@angular/forms";
 
 describe('ZipCodeFormComponent', () => {
   let component: ZipCodeFormComponent;
@@ -8,7 +9,8 @@ describe('ZipCodeFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ZipCodeFormComponent ]
+      declarations: [ ZipCodeFormComponent ],
+      providers: [ FormBuilder ]
     })
     .compileComponents();
 
