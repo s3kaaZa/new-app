@@ -27,8 +27,8 @@ export class StatePageComponent implements OnInit {
   UserZipCode: number | undefined;
 
   constructor(
-    private dataService: DataService,
-    private dataTransformService: DataTransformService
+    private readonly dataService: DataService,
+    private readonly dataTransformService: DataTransformService
   ) { }
 
   ngOnInit(): void {

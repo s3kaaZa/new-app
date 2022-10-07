@@ -9,9 +9,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class OptionsAndEmailFormComponent implements OnInit {
   EmailAndOptionsForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private readonly formBuilder: FormBuilder) {
     this.EmailAndOptionsForm = formBuilder.group({
       Option: ['', Validators.required],
       Email: ['', [
@@ -23,5 +21,4 @@ export class OptionsAndEmailFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

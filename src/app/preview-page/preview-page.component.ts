@@ -15,7 +15,7 @@ export class PreviewPageComponent implements OnInit {
   @Input('email') Email!: string | undefined;
   @Input('zipCode') ZipCode!: number | undefined;
 
-  constructor(private dataService: DataService) { }
+  constructor(private readonly dataService: DataService) { }
 
   ngOnInit(): void {
     const user: IUserViewModel | null = this.dataService.GetData();

@@ -9,9 +9,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class NameAndCountryFormComponent implements OnInit {
   NamesAndCountryForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private readonly formBuilder: FormBuilder) {
     this.NamesAndCountryForm = formBuilder.group({
       Name: ['', [Validators.required]],
       Surname: ['', [Validators.required]],
