@@ -47,6 +47,11 @@ export class StatePageComponent implements OnInit {
     }
   }
   SaveData() {
+    const allFormsList = [
+      this.nameAndCountryForm.NamesAndCountryForm,
+      this.optionsAndEmailForm.EmailAndOptionsForm,
+      this.zipCodeForm.ZipCodeForm
+    ];
     if (this.nameAndCountryForm.NamesAndCountryForm.valid && this.optionsAndEmailForm.EmailAndOptionsForm.valid && this.zipCodeForm.ZipCodeForm.valid) {
       const user: IUserViewModel = {
         ...this.nameAndCountryForm.NamesAndCountryForm.value,
@@ -55,13 +60,10 @@ export class StatePageComponent implements OnInit {
       };
       const userRaw: IUser = this.dataTransformService.UserDataFromViewModel(user);
       this.dataService.SaveData(userRaw);
+      this.clearForms(allFormsList);
       this.setPreviewVars(user);
     } else {
-      this.markFormsAsTouched([
-        this.nameAndCountryForm.NamesAndCountryForm,
-        this.optionsAndEmailForm.EmailAndOptionsForm,
-        this.zipCodeForm.ZipCodeForm
-      ]);
+      this.markFormsAsTouched(allFormsList);
     }
   }
   private setPreviewVars(user: IUserViewModel) {
@@ -73,6 +75,9 @@ export class StatePageComponent implements OnInit {
     this.UserZipCode = user.ZipCode;
   }
   private markFormsAsTouched(forms: FormGroup[]): void {
-    forms.forEach(form => form.markAllAsTouched());
+    forms.forEach((form: FormGroup) => form.markAllAsTouched());
+  }
+  private clearForms(forms: FormGroup[]) {
+    forms.forEach((form: FormGroup) => form.reset());
   }
 }
