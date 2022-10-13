@@ -4,7 +4,7 @@ import { LocalService } from './local.service';
 
 describe('LocalService', () => {
   const localStorageKey = 'test';
-  const localStorageData = {
+  const userFromViewModel = {
     name: 'string',
     surname: 'string',
     country: 'string',
@@ -24,20 +24,20 @@ describe('LocalService', () => {
   });
 
   it('SaveUserToLocalStorage should create an object in localStorage', () => {
-    service.SaveUserToLocalStorage(localStorageKey, localStorageData);
+    service.SaveUserToLocalStorage(localStorageKey, userFromViewModel);
     const result = localStorage.getItem(localStorageKey);
     expect(result).toEqual('{"name":"string","surname":"string","country":"string","option":"string","email":"string","zipCode":12345}');
   });
 
-  it('GetUserFromLocalStorage should return object from localStorage', () => {
-    service.SaveUserToLocalStorage(localStorageKey, localStorageData);
-    const result1 = service.GetUserFromLocalStorage(localStorageKey);
-    expect(result1).toEqual(localStorageData);
+  it('GetUserFromLocalStorage should return user from view model from localStorage', () => {
+    service.SaveUserToLocalStorage(localStorageKey, userFromViewModel);
+    const result = service.GetUserFromLocalStorage(localStorageKey);
+    expect(result).toEqual(userFromViewModel);
   });
 
   it('GetUserFromLocalStorage should return null from localStorage', () => {
     localStorage.clear();
-    const result2 = service.GetUserFromLocalStorage(localStorageKey);
-    expect(result2).toBeNull();
+    const result = service.GetUserFromLocalStorage(localStorageKey);
+    expect(result).toBeNull();
   });
 });
