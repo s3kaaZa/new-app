@@ -14,13 +14,13 @@ module.exports = function (config) {
     ],
     client: {
       jasmine: {
-        // you can add configuration options for Jasmine here
-        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
-        // for example, you can disable the random execution with `random: false`
-        // or set a specific seed with `seed: 4321`
+        random: false
       },
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    files: [
+      '*.js'
+    ],
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
@@ -29,9 +29,15 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
-      ]
+        { type: 'text-summary' },
+        { type: 'clover', dir: require('path').join(__dirname, './coverage/new-app'), subdir: '.', file: 'clover.xml' }
+      ],
+      fixWebpackSourcePaths: true
     },
+    browserDisconnectTimeout : 10000, // default 2000
+    browserDisconnectTolerance : 1, // default 0
+    browserNoActivityTimeout : 4*60*1000,  //default 10000
+    captureTimeout : 4*60*1000, //default 60000
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
