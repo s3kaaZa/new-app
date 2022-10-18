@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DataService } from "../services/data.service";
 import { NameAndCountryFormComponent } from "../name-and-country-form/name-and-country-form.component";
 import { OptionsAndEmailFormComponent } from "../options-and-email-form/options-and-email-form.component";
@@ -12,7 +12,7 @@ import { FormGroup } from "@angular/forms";
   templateUrl: './state-page.component.html',
   styleUrls: ['./state-page.component.scss']
 })
-export class StatePageComponent implements OnInit {
+export class StatePageComponent {
   @ViewChild(NameAndCountryFormComponent, {static: false}) nameAndCountryForm!: NameAndCountryFormComponent;
   @ViewChild(OptionsAndEmailFormComponent, {static: false}) optionsAndEmailForm!: OptionsAndEmailFormComponent;
   @ViewChild(ZipCodeFormComponent, {static: false}) zipCodeForm!: ZipCodeFormComponent;
@@ -25,16 +25,14 @@ export class StatePageComponent implements OnInit {
   UserOption: string | undefined = '';
   UserEmail: string | undefined = '';
   UserZipCode: number | undefined;
+  isFormsValid: boolean = false;
 
   constructor(
     private readonly dataService: DataService,
     private readonly dataTransformService: DataTransformService
   ) { }
 
-  ngOnInit(): void {
-  }
-
-  ShowForms(key: number) {
+  ShowForms(key: number): void {
     if (key === 1) {
       this.IsHiddenNamesForm = false;
       this.IsHiddenOptionForm = false;
@@ -46,27 +44,33 @@ export class StatePageComponent implements OnInit {
       this.IsHiddenZipCodeForm = false;
     }
   }
-  SaveData() {
-    const allFormsList = [
+  SaveData(): void {
+    const formsList: FormGroup[] = [
       this.nameAndCountryForm.NamesAndCountryForm,
-      this.optionsAndEmailForm.EmailAndOptionsForm,
+      this.optionsAndEmailForm.OptionsAndEmailForm,
       this.zipCodeForm.ZipCodeForm
     ];
-    if (this.nameAndCountryForm.NamesAndCountryForm.valid && this.optionsAndEmailForm.EmailAndOptionsForm.valid && this.zipCodeForm.ZipCodeForm.valid) {
+    this.isFormsValid = this.nameAndCountryForm.NamesAndCountryForm.valid &&
+      this.optionsAndEmailForm.OptionsAndEmailForm.valid &&
+      this.zipCodeForm.ZipCodeForm.valid;
+    if (this.isFormsValid) {
       const user: IUserViewModel = {
         ...this.nameAndCountryForm.NamesAndCountryForm.value,
-        ...this.optionsAndEmailForm.EmailAndOptionsForm.value,
+        ...this.optionsAndEmailForm.OptionsAndEmailForm.value,
         ...this.zipCodeForm.ZipCodeForm.value
       };
       const userRaw: IUser = this.dataTransformService.UserDataFromViewModel(user);
       this.dataService.SaveData(userRaw);
-      this.clearForms(allFormsList);
+      this.clearForms(formsList);
       this.setPreviewVars(user);
     } else {
-      this.markFormsAsTouched(allFormsList);
+      this.markFormsAsTouched(formsList);
     }
   }
-  private setPreviewVars(user: IUserViewModel) {
+  private clearForms(forms: FormGroup[]): void {
+    forms.forEach((form: FormGroup) => form.reset());
+  }
+  private setPreviewVars(user: IUserViewModel): void {
     this.UserName = user.Name;
     this.UserSurname = user.Surname;
     this.UserCountry = user.Country;
@@ -76,8 +80,5 @@ export class StatePageComponent implements OnInit {
   }
   private markFormsAsTouched(forms: FormGroup[]): void {
     forms.forEach((form: FormGroup) => form.markAllAsTouched());
-  }
-  private clearForms(forms: FormGroup[]) {
-    forms.forEach((form: FormGroup) => form.reset());
   }
 }

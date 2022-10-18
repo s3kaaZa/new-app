@@ -6,19 +6,16 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   templateUrl: './options-and-email-form.component.html',
   styleUrls: ['./options-and-email-form.component.scss']
 })
-export class OptionsAndEmailFormComponent implements OnInit {
-  EmailAndOptionsForm: FormGroup;
+export class OptionsAndEmailFormComponent {
+  OptionsAndEmailForm: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder) {
-    this.EmailAndOptionsForm = formBuilder.group({
+  constructor(private formBuilder: FormBuilder) {
+    this.OptionsAndEmailForm = formBuilder.group({
       Option: ['', Validators.required],
       Email: ['', [
         Validators.required,
         Validators.email
       ]],
     });
-  }
-
-  ngOnInit(): void {
   }
 }
