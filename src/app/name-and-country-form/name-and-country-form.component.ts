@@ -6,19 +6,14 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   templateUrl: './name-and-country-form.component.html',
   styleUrls: ['./name-and-country-form.component.scss']
 })
-export class NameAndCountryFormComponent implements OnInit {
+export class NameAndCountryFormComponent {
   NamesAndCountryForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {
+  constructor(private readonly formBuilder: FormBuilder) {
     this.NamesAndCountryForm = formBuilder.group({
       Name: ['', [Validators.required]],
       Surname: ['', [Validators.required]],
       Country: ['', [Validators.required]]
     });
-  }
-
-  ngOnInit(): void {
   }
 }

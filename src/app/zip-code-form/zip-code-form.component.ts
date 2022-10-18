@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class ZipCodeFormComponent implements OnInit {
   ZipCodeForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private readonly formBuilder: FormBuilder) {
     this.ZipCodeForm = formBuilder.group({
       ZipCode: ['', [Validators.required]],
     });
@@ -17,5 +17,4 @@ export class ZipCodeFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -1,9 +1,9 @@
 <div class="state_page_container">
   <nav class="header">
     <span class="header_button_container">
-      <a class="header_button_tab" mat-raised-button href="/" target="_self">Main</a>
-      <button class="header_button_tab" mat-flat-button color="primary" (click)="ShowForms(1)">Tab 1</button>
-      <button class="header_button_tab" mat-flat-button color="primary" (click)="ShowForms(2)">Tab 2</button>
+      <a class="header_button main_page_button" mat-raised-button href="/" target="_self">Main</a>
+      <button id="firstButton" class="header_button header_button_tab" mat-flat-button color="primary" (click)="ShowForms(1)">Tab 1</button>
+      <button id="secondButton" class="header_button header_button_tab" mat-flat-button color="primary" (click)="ShowForms(2)">Tab 2</button>
     </span>
     <button mat-flat-button color="accent" (click)="SaveData()">Save</button>
   </nav>

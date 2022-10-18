@@ -8,11 +8,11 @@ import { DataTransformService } from "./data-transform.service";
   providedIn: 'root'
 })
 export class DataService {
-  protected localStorageKey = 'user';
+  protected readonly localStorageKey = 'user';
 
   constructor(
-    private localService: LocalService,
-    private dataTransformService: DataTransformService
+    private readonly localService: LocalService,
+    private readonly dataTransformService: DataTransformService
   ) { }
 
   SaveData(user: IUser): void {
