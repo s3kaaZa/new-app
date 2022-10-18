@@ -8,7 +8,7 @@ export class LocalService {
 
   constructor() { }
 
-  SaveUserToLocalStorage(key: string, user: IUser) {
+  SaveUserToLocalStorage(key: string, user: IUser): void {
     localStorage.setItem(key, JSON.stringify(user));
   }
   GetUserFromLocalStorage(key: string): IUser | null {

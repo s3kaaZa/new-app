@@ -8,7 +8,7 @@ export class DataTransformService {
 
   constructor() { }
 
-  UserDataToViewModel(user: IUser) {
+  UserDataToViewModel(user: IUser): IUserViewModel {
     return {
       Name: user.name,
       Surname: user.surname,
@@ -19,7 +19,7 @@ export class DataTransformService {
     }
 
   }
-  UserDataFromViewModel(user: IUserViewModel) {
+  UserDataFromViewModel(user: IUserViewModel): IUser {
     return {
       name: user.Name.trim(),
       surname: user.Surname.trim(),
