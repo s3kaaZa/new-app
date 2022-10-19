@@ -11,7 +11,7 @@
     justify-content: space-between;
     margin-bottom: $form-margin-bottom;
 
-    .header_button_tab {
+    .header_button, .header_button_tab {
       margin-right: 1rem;
 
       &:last-child {
