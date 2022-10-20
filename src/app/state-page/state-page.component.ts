@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from "../services/data.service";
 import { NameAndCountryFormComponent } from "../name-and-country-form/name-and-country-form.component";
 import { OptionsAndEmailFormComponent } from "../options-and-email-form/options-and-email-form.component";
@@ -12,7 +12,7 @@ import { FormGroup } from "@angular/forms";
   templateUrl: './state-page.component.html',
   styleUrls: ['./state-page.component.scss']
 })
-export class StatePageComponent {
+export class StatePageComponent implements OnInit {
   @ViewChild(NameAndCountryFormComponent, {static: false}) nameAndCountryForm!: NameAndCountryFormComponent;
   @ViewChild(OptionsAndEmailFormComponent, {static: false}) optionsAndEmailForm!: OptionsAndEmailFormComponent;
   @ViewChild(ZipCodeFormComponent, {static: false}) zipCodeForm!: ZipCodeFormComponent;
@@ -31,7 +31,12 @@ export class StatePageComponent {
     private readonly dataService: DataService,
     private readonly dataTransformService: DataTransformService
   ) { }
-
+  ngOnInit(): void {
+    const savedUser: IUserViewModel | null = this.dataService.GetData();
+    if (savedUser) {
+      this.setPreviewVars(savedUser);
+    }
+  }
   ShowForms(key: number): void {
     if (key === 1) {
       this.IsHiddenNamesForm = false;

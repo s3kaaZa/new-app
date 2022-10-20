@@ -14,13 +14,15 @@
       <app-zip-code-form [hidden]="IsHiddenZipCodeForm"></app-zip-code-form>
     </div>
     <div class="preview_container">
-      <app-preview-page
-        [name]="UserName"
-        [surname]="UserSurname"
-        [country]="UserCountry"
-        [option]="UserOption"
-        [email]="UserEmail"
-        [zipCode]="UserZipCode">
+      <app-preview-page>
+        <mat-card class="preview_card">
+          <p>Name: {{UserName}}</p>
+          <p>Surname: {{UserSurname}}</p>
+          <p>Country: {{UserCountry}}</p>
+          <p>Option: {{UserOption}}</p>
+          <p>Email: {{UserEmail}}</p>
+          <p>Zip Code: {{UserZipCode}}</p>
+        </mat-card>
       </app-preview-page>
     </div>
   </div>

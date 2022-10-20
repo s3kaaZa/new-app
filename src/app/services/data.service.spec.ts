@@ -69,7 +69,7 @@ describe('DataService', () => {
     transformServiceSpy.UserDataToViewModel.and.returnValue(userToViewModel);
     dataService.GetData();
     expect(localServiceSpy.GetUserFromLocalStorage).toHaveBeenCalled();
-    expect(transformServiceSpy.UserDataToViewModel).toHaveBeenCalled();
+    expect(transformServiceSpy.UserDataToViewModel).toHaveBeenCalledWith(userFromViewModel);
     expect(dataService.GetData()).toEqual(userToViewModel);
   });
 });
