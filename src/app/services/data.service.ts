@@ -15,8 +15,11 @@ export class DataService {
     private readonly dataTransformService: DataTransformService
   ) { }
 
-  SaveData(user: IUser): void {
-    this.localService.SaveUserToLocalStorage(this.localStorageKey, user);
+  SaveData(user: IUserViewModel): void {
+    this.localService.SaveUserToLocalStorage(
+      this.localStorageKey,
+      this.dataTransformService.UserDataFromViewModel(user)
+    );
   }
   GetData(): IUserViewModel | null {
     const user: IUser | null = this.localService.GetUserFromLocalStorage(this.localStorageKey);

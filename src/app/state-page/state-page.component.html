@@ -2,16 +2,16 @@
   <nav class="header">
     <span class="header_button_container">
       <a class="header_button main_page_button" mat-raised-button href="/" target="_self">Main</a>
-      <button id="firstButton" class="header_button header_button_tab" mat-flat-button color="primary" (click)="ShowForms(1)">Tab 1</button>
-      <button id="secondButton" class="header_button header_button_tab" mat-flat-button color="primary" (click)="ShowForms(2)">Tab 2</button>
+      <button id="firstButton" class="header_button header_button_tab" mat-flat-button color="primary" (click)="ShowForms(ShowFormsIndex.isNameAndOptionForms)">Tab 1</button>
+      <button id="secondButton" class="header_button header_button_tab" mat-flat-button color="primary" (click)="ShowForms(ShowFormsIndex.isZipCodeForm)">Tab 2</button>
     </span>
     <button mat-flat-button color="accent" (click)="SaveData()">Save</button>
   </nav>
   <div class="forms_and_preview_container">
     <div class="forms_container">
-      <app-name-and-country-form [hidden]="IsHiddenNamesForm"></app-name-and-country-form>
-      <app-options-and-email-form [hidden]="IsHiddenOptionForm"></app-options-and-email-form>
-      <app-zip-code-form [hidden]="IsHiddenZipCodeForm"></app-zip-code-form>
+      <app-name-and-country-form [hidden]="VisibleForms !== ShowFormsIndex.isNameAndOptionForms"></app-name-and-country-form>
+      <app-options-and-email-form [hidden]="VisibleForms !== ShowFormsIndex.isNameAndOptionForms"></app-options-and-email-form>
+      <app-zip-code-form [hidden]="VisibleForms !== ShowFormsIndex.isZipCodeForm"></app-zip-code-form>
     </div>
     <div class="preview_container">
       <app-preview-page>
