@@ -5,9 +5,6 @@ import { IUser, IUserViewModel } from "../models/user.model";
   providedIn: 'root'
 })
 export class DataTransformService {
-
-  constructor() { }
-
   UserDataToViewModel(user: IUser): IUserViewModel {
     return {
       Name: user.name,

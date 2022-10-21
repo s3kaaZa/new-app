@@ -5,9 +5,6 @@ import { IUser } from "../models/user.model";
   providedIn: 'root'
 })
 export class LocalService {
-
-  constructor() { }
-
   SaveUserToLocalStorage(key: string, user: IUser): void {
     localStorage.setItem(key, JSON.stringify(user));
   }
