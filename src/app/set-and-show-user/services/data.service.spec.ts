@@ -46,7 +46,7 @@ describe('DataService', () => {
 
   it('SaveData should call the SaveUserToLocalStorage method from LocalService', () => {
     const key = 'user';
-    dataService.SaveData(userFromViewModel);
+    // dataService.SaveData(userFromViewModel);
     expect(localServiceSpy.SaveUserToLocalStorage).toHaveBeenCalledWith(key, userFromViewModel);
   });
 

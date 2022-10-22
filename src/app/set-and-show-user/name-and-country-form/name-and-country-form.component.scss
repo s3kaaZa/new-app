@@ -1,6 +1,8 @@
-@import "../app.component.scss";
+@import "../../app.component";
 
-.zip_code_container {
+.names_and_country_container {
+  margin-bottom: $form-margin-bottom;
+
   .mat-card {
     background-color: $card-background-color;
 

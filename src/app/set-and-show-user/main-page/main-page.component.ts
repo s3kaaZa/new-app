@@ -8,10 +8,10 @@ import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-state-page',
-  templateUrl: './state-page.component.html',
-  styleUrls: ['./state-page.component.scss']
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss']
 })
-export class StatePageComponent implements OnInit {
+export class MainPageComponent implements OnInit {
   @ViewChild(NameAndCountryFormComponent, {static: false}) nameAndCountryForm!: NameAndCountryFormComponent;
   @ViewChild(OptionsAndEmailFormComponent, {static: false}) optionsAndEmailForm!: OptionsAndEmailFormComponent;
   @ViewChild(ZipCodeFormComponent, {static: false}) zipCodeForm!: ZipCodeFormComponent;
