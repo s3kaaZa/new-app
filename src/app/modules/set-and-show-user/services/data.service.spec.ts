@@ -21,7 +21,7 @@ describe('DataService', () => {
     ZipCode: 12345
   };
   const localServiceSpy = jasmine.createSpyObj<LocalService>('LocalService', ['SaveUserToLocalStorage', 'GetUserFromLocalStorage']);
-  const transformServiceSpy = jasmine.createSpyObj<DataTransformService>('DataTransformService', ['UserDataToViewModel']);
+  const transformServiceSpy = jasmine.createSpyObj<DataTransformService>('DataTransformService', ['UserDataToViewModel', 'UserDataFromViewModel']);
   let dataService: DataService;
 
   beforeEach(() => {
@@ -46,8 +46,9 @@ describe('DataService', () => {
 
   it('SaveData should call the SaveUserToLocalStorage method from LocalService', () => {
     const key = 'user';
-    // dataService.SaveData(userFromViewModel);
-    expect(localServiceSpy.SaveUserToLocalStorage).toHaveBeenCalledWith(key, userFromViewModel);
+    transformServiceSpy.UserDataFromViewModel.and.returnValue(userFromViewModel);
+    dataService.SaveData(userToViewModel);
+    expect(localServiceSpy.SaveUserToLocalStorage).toHaveBeenCalled();
   });
 
   it('GetData should call the GetUserFromLocalStorage method from LocalService', () => {

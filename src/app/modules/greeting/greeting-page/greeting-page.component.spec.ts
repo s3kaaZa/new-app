@@ -23,7 +23,7 @@ describe('MainPageComponent', () => {
 
   it('#greeting should show a greeting', () => {
     const greetingEl: HTMLElement = fixture.debugElement.nativeElement;
-    const greeting = greetingEl.querySelector('#greeting');
+    const greeting = greetingEl.querySelector('#greetingText');
     expect(greeting?.textContent).toContain('Hi there!');
   });
 
@@ -31,6 +31,6 @@ describe('MainPageComponent', () => {
     const el: HTMLElement = fixture.debugElement.nativeElement;
     const link = el.querySelector('a');
     expect(link).toBeDefined();
-    expect(link?.getAttribute('routerLink')).toEqual('/state-page');
+    expect(link?.getAttribute('href')).toEqual('/state-page');
   });
 });

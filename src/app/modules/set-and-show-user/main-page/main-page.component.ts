@@ -15,6 +15,7 @@ export class MainPageComponent implements OnInit {
   @ViewChild(NameAndCountryFormComponent, {static: false}) nameAndCountryForm!: NameAndCountryFormComponent;
   @ViewChild(OptionsAndEmailFormComponent, {static: false}) optionsAndEmailForm!: OptionsAndEmailFormComponent;
   @ViewChild(ZipCodeFormComponent, {static: false}) zipCodeForm!: ZipCodeFormComponent;
+  savedUser: IUserViewModel | null = null;
   ShowFormsIndex = {
     isNameAndOptionForms: 1,
     isZipCodeForm: 2
@@ -32,9 +33,9 @@ export class MainPageComponent implements OnInit {
     private readonly dataService: DataService,
   ) { }
   ngOnInit(): void {
-    const savedUser: IUserViewModel | null = this.dataService.GetData();
-    if (savedUser) {
-      this.setPreviewControlsValue(savedUser);
+    this.savedUser = this.dataService.GetData();
+    if (this.savedUser) {
+      this.SetPreviewControlsValue(this.savedUser);
     }
   }
   ShowForms(key: any): void {
@@ -57,21 +58,21 @@ export class MainPageComponent implements OnInit {
       };
       this.dataService.SaveData(user);
       this.clearForms(formsList);
-      this.setPreviewControlsValue(user);
+      this.SetPreviewControlsValue(user);
     } else {
       this.markFormsAsTouched(formsList);
     }
   }
-  private clearForms(forms: FormGroup[]): void {
-    forms.forEach((form: FormGroup) => form.reset());
-  }
-  private setPreviewControlsValue(user: IUserViewModel): void {
+  SetPreviewControlsValue(user: IUserViewModel): void {
     this.UserName = user.Name;
     this.UserSurname = user.Surname;
     this.UserCountry = user.Country;
     this.UserOption = user.Option;
     this.UserEmail = user.Email;
     this.UserZipCode = user.ZipCode;
+  }
+  private clearForms(forms: FormGroup[]): void {
+    forms.forEach((form: FormGroup) => form.reset());
   }
   private markFormsAsTouched(forms: FormGroup[]): void {
     forms.forEach((form: FormGroup) => form.markAllAsTouched());

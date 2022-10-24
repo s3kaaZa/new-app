@@ -5,8 +5,10 @@ import { NameAndCountryFormComponent } from "../name-and-country-form/name-and-c
 import { OptionsAndEmailFormComponent } from "../options-and-email-form/options-and-email-form.component";
 import { ZipCodeFormComponent } from "../zip-code-form/zip-code-form.component";
 import { FormBuilder } from "@angular/forms";
+import { DataService } from "../services/data.service";
 
-describe('StatePageComponent', () => {
+describe('MainPageComponent', () => {
+  const dataServiceSpy = jasmine.createSpyObj<DataService>('DataService', ['GetData']);
   let component: MainPageComponent;
   let fixture: ComponentFixture<MainPageComponent>;
 
@@ -18,7 +20,13 @@ describe('StatePageComponent', () => {
         OptionsAndEmailFormComponent,
         ZipCodeFormComponent
       ],
-      providers: [ FormBuilder ]
+      providers: [
+        FormBuilder,
+        {
+          provider: DataService,
+          useValue: dataServiceSpy
+        }
+      ]
     })
     .compileComponents();
 
@@ -49,15 +57,11 @@ describe('StatePageComponent', () => {
     expect(component.ShowForms).toHaveBeenCalledWith(2);
   }));
 
-  it('ShowForms with parameters 1 or 2 should show different forms', () => {
-    // component.ShowForms(1);
-    // expect(component.IsHiddenNamesForm).toBeFalse();
-    // expect(component.IsHiddenOptionForm).toBeFalse();
-    // expect(component.IsHiddenZipCodeForm).toBeTrue();
-    // component.ShowForms(2);
-    // expect(component.IsHiddenNamesForm).toBeTrue();
-    // expect(component.IsHiddenOptionForm).toBeTrue();
-    // expect(component.IsHiddenZipCodeForm).toBeFalse();
+  it('ShowForms should set VisibleForms as 1 or 2', () => {
+    component.ShowForms(1);
+    expect(component.VisibleForms).toEqual(1);
+    component.ShowForms(2);
+    expect(component.VisibleForms).toEqual(2);
   });
 
   it('SaveData should make all forms touched', () => {
@@ -67,12 +71,13 @@ describe('StatePageComponent', () => {
     expect(component.zipCodeForm.ZipCodeForm.touched).toBeTrue();
   });
 
-  it('SaveData should change isFormValid to true', () => {
+  it('SaveData should call SetPreviewControlsValue', () => {
+    spyOn(component, 'SetPreviewControlsValue');
     component.nameAndCountryForm.NamesAndCountryForm.patchValue({Name: 'string', Surname: 'string', Country: 'string'});
     component.optionsAndEmailForm.OptionsAndEmailForm.patchValue({Option: 'string', Email: 'string@string.com'});
     component.zipCodeForm.ZipCodeForm.patchValue({ZipCode: 12345});
     component.SaveData();
-    // expect(component.isFormsValid).toBeTrue();
+    expect(component.SetPreviewControlsValue).toHaveBeenCalled();
   });
 
   it('private clearForms should clear all forms', () => {
@@ -90,14 +95,14 @@ describe('StatePageComponent', () => {
   });
 
   it('private setPreviewVars should set preview variables', () => {
-    // component['setPreviewVars']({
-    //   Name: 'string',
-    //   Surname: 'string',
-    //   Country: 'string',
-    //   Option: 'string',
-    //   Email: 'string@string.com',
-    //   ZipCode: 12345
-    // });
+    component['SetPreviewControlsValue']({
+      Name: 'string',
+      Surname: 'string',
+      Country: 'string',
+      Option: 'string',
+      Email: 'string@string.com',
+      ZipCode: 12345
+    });
     expect(component.UserName).toEqual('string');
     expect(component.UserSurname).toEqual('string');
     expect(component.UserCountry).toEqual('string');
