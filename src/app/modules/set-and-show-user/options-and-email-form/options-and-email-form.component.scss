@@ -2,19 +2,12 @@
 
 .options_and_email_container {
   .radio_group {
-    display: flex;
-    flex-direction: column;
+    @extend %flex_direction_column;
 
-    & > * {
-      margin-bottom: .5rem;
+    & > .mat-radio-button {
+      margin: $radio_button_margin_bottom;
     }
   }
 
-  .mat-card {
-    background-color: $card-background-color;
-
-    .form_input {
-      width: $control-width;
-    }
-  }
+  @extend %card_bc_color_and_control_width;
 }

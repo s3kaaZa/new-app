@@ -1,11 +1,5 @@
 @import "../../../app.component";
 
 .zip_code_container {
-  .mat-card {
-    background-color: $card-background-color;
-
-    .form_input {
-      width: $control-width;
-    }
-  }
+  @extend %card_bc_color_and_control_width;
 }

@@ -1,4 +1,4 @@
-<div class="state_page_container">
+<div class="main_page_container">
   <nav class="header">
     <span class="header_button_container">
       <a class="header_button main_page_button" mat-raised-button href="/" target="_self">Main</a>
@@ -9,12 +9,12 @@
   </nav>
   <div class="forms_and_preview_container">
     <div class="forms_container">
-      <app-name-and-country-form [hidden]="VisibleForms !== ShowFormsIndex.isNameAndOptionForms"></app-name-and-country-form>
-      <app-options-and-email-form [hidden]="VisibleForms !== ShowFormsIndex.isNameAndOptionForms"></app-options-and-email-form>
-      <app-zip-code-form [hidden]="VisibleForms !== ShowFormsIndex.isZipCodeForm"></app-zip-code-form>
+      <app-name-and-country-form class="item_form" [hidden]="VisibleForms !== ShowFormsIndex.isNameAndOptionForms"></app-name-and-country-form>
+      <app-options-and-email-form class="item_form" [hidden]="VisibleForms !== ShowFormsIndex.isNameAndOptionForms"></app-options-and-email-form>
+      <app-zip-code-form class="item_form" [hidden]="VisibleForms !== ShowFormsIndex.isZipCodeForm"></app-zip-code-form>
     </div>
     <div class="preview_container">
-      <app-preview-page>
+      <app-preview-page class="preview_page">
         <mat-card class="preview_card">
           <p>Name: {{UserName}}</p>
           <p>Surname: {{UserSurname}}</p>
