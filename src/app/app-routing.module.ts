@@ -4,8 +4,9 @@ import { GreetingPageComponent } from "./modules/greeting/greeting-page/greeting
 import { MainPageComponent } from "./modules/set-and-show-user/main-page/main-page.component";
 
 const routes: Routes = [
-  { path: '', component: GreetingPageComponent },
-  { path: 'state-page', component: MainPageComponent }
+  { path: 'welcome', component: GreetingPageComponent },
+  { path: 'user', component: MainPageComponent },
+  { path: '**', redirectTo: 'welcome' },
 ];
 
 @NgModule({
