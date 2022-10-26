@@ -1,0 +1,39 @@
+@import "../../../styles/form_constants";
+
+.user_settings_container {
+  .header {
+    @extend %flex_space_between;
+    margin: $main_margin_bottom;
+
+    .header_button, .header_button_tab {
+      margin: $header_button_margin_right;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .forms_and_preview_container {
+    @extend %flex_space_between;
+
+    .forms_container {
+      @extend %flex_direction_column;
+      width: $form_width;
+
+      .item_form {
+        margin: $main_margin_bottom;
+      }
+    }
+
+    .preview_container {
+      flex: 1;
+      margin: $preview_margin_left;
+
+      .preview_card {
+        height: $preview_height;
+      }
+    }
+  }
+}
+

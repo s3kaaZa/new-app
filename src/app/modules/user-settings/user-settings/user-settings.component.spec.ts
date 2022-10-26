@@ -1,0 +1,98 @@
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { FormBuilder } from "@angular/forms";
+
+import { UserSettingsComponent } from '@main/app/modules/user-settings/user-settings/user-settings.component';
+import { NameAndCountryFormComponent } from "@main/app/modules/user-settings/user-settings/components/name-and-country-form/name-and-country-form.component";
+import { OptionsAndEmailFormComponent } from "@main/app/modules/user-settings/user-settings/components/options-and-email-form/options-and-email-form.component";
+import { ZipCodeFormComponent } from "@main/app/modules/user-settings/user-settings/components/zip-code-form/zip-code-form.component";
+import { DataService } from "@main/app/modules/user-settings/services/data.service";
+
+describe('UserSettingsComponent', () => {
+  const dataServiceSpy = jasmine.createSpyObj<DataService>('DataService', ['GetData']);
+  let component: UserSettingsComponent;
+  let fixture: ComponentFixture<UserSettingsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [
+        UserSettingsComponent,
+        NameAndCountryFormComponent,
+        OptionsAndEmailFormComponent,
+        ZipCodeFormComponent
+      ],
+      providers: [
+        FormBuilder,
+        {
+          provider: DataService,
+          useValue: dataServiceSpy
+        }
+      ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(UserSettingsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('form invalid when empty', () => {
+    expect(component.nameAndCountryForm.NamesAndCountryForm.valid).toBeFalsy();
+    expect(component.optionsAndEmailForm.OptionsAndEmailForm.valid).toBeFalsy();
+    expect(component.zipCodeForm.ZipCodeForm.valid).toBeFalsy();
+  });
+
+  it('.primary_button / .secondary_button click should call ShowForms with 1 / 2)', fakeAsync(() => {
+    spyOn(component, 'ShowTab');
+    const firstButton = fixture.debugElement.nativeElement.querySelector('.primary_button');
+    const secondButton = fixture.debugElement.nativeElement.querySelector('.secondary_button');
+    firstButton.click();
+    tick();
+    expect(component.ShowTab).toHaveBeenCalledWith(1);
+    secondButton.click();
+    tick();
+    expect(component.ShowTab).toHaveBeenCalledWith(2);
+  }));
+
+  it('ShowForms should set VisibleForms as 1 or 2', () => {
+    component.ShowTab(1);
+    expect(component.HideFirstTab).toBeTrue();
+    component.ShowTab(2);
+    expect(component.HideSecondTab).toBeTrue();
+  });
+
+  it('SaveData should make all forms touched', () => {
+    component.SaveData()
+    expect(component.nameAndCountryForm.NamesAndCountryForm.touched).toBeTrue();
+    expect(component.optionsAndEmailForm.OptionsAndEmailForm.touched).toBeTrue();
+    expect(component.zipCodeForm.ZipCodeForm.touched).toBeTrue();
+  });
+
+  it('private clearForms should clear all forms', () => {
+    component.nameAndCountryForm.NamesAndCountryForm.patchValue({Name: 'string', Surname: 'string', Country: 'string'});
+    component.optionsAndEmailForm.OptionsAndEmailForm.patchValue({Option: 'string', Email: 'string@string.com'});
+    component.zipCodeForm.ZipCodeForm.patchValue({ZipCode: 12345});
+    component['clearForms']([
+      component.nameAndCountryForm.NamesAndCountryForm,
+      component.optionsAndEmailForm.OptionsAndEmailForm,
+      component.zipCodeForm.ZipCodeForm
+    ]);
+    expect(component.nameAndCountryForm.NamesAndCountryForm.value).toEqual({Name: null, Surname: null, Country: null});
+    expect(component.optionsAndEmailForm.OptionsAndEmailForm.value).toEqual({Option: null, Email: null});
+    expect(component.zipCodeForm.ZipCodeForm.value).toEqual({ZipCode: null});
+  });
+
+  it('private markFormsAsTouched should clear all controls', () => {
+    component['markFormsAsTouched']([
+      component.nameAndCountryForm.NamesAndCountryForm,
+      component.optionsAndEmailForm.OptionsAndEmailForm,
+      component.zipCodeForm.ZipCodeForm
+    ]);
+    expect(component.nameAndCountryForm.NamesAndCountryForm.touched).toBeTrue();
+    expect(component.optionsAndEmailForm.OptionsAndEmailForm.touched).toBeTrue();
+    expect(component.zipCodeForm.ZipCodeForm.touched).toBeTrue();
+  });
+});

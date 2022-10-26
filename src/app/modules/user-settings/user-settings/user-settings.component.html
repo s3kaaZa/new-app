@@ -1,0 +1,29 @@
+<div class="user_settings_container">
+  <nav class="header">
+    <span class="header_button_container">
+      <a class="header_button main_page_button" mat-raised-button href="/" target="_self">Main</a>
+      <button class="header_button header_button_tab primary_button" mat-flat-button color="primary" (click)="ShowTab(1)">Tab 1</button>
+      <button class="header_button header_button_tab secondary_button" mat-flat-button color="primary" (click)="ShowTab(2)">Tab 2</button>
+    </span>
+    <button mat-flat-button color="accent" (click)="SaveData()">Save</button>
+  </nav>
+  <div class="forms_and_preview_container">
+    <div class="forms_container">
+      <app-name-and-country-form class="item_form" [hidden]="HideFirstTab"></app-name-and-country-form>
+      <app-options-and-email-form class="item_form" [hidden]="HideFirstTab"></app-options-and-email-form>
+      <app-zip-code-form class="item_form" [hidden]="HideSecondTab"></app-zip-code-form>
+    </div>
+    <div class="preview_container">
+      <app-preview-page>
+        <mat-card class="preview_card">
+          <p>Name: {{User?.Name}}</p>
+          <p>Surname: {{User?.Surname}}</p>
+          <p>Country: {{User?.Country}}</p>
+          <p>Option: {{User?.Option}}</p>
+          <p>Email: {{User?.Email}}</p>
+          <p>Zip Code: {{User?.ZipCode}}</p>
+        </mat-card>
+      </app-preview-page>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { GreetingModule } from "./modules/greeting/greeting.module";
-import { SetAndShowUserModule } from "./modules/set-and-show-user/set-and-show-user.module";
+import { AppRoutingModule } from '@main/app/app-routing.module';
+import { AppComponent } from '@main/app/app.component';
+import { WelcomePageModule } from "@main/app/modules/welcome-page/welcome-page.module";
+import { UserSettingsModule } from "@main/app/modules/user-settings/user-settings.module";
 
 @NgModule({
   declarations: [
@@ -12,8 +12,8 @@ import { SetAndShowUserModule } from "./modules/set-and-show-user/set-and-show-u
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GreetingModule,
-    SetAndShowUserModule
+    WelcomePageModule,
+    UserSettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

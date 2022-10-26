@@ -1,34 +1,9 @@
-$app_width: 600px;
-$app_height: 500px;
-$app_padding: 1rem;
-$app_bc_color: #DCDCDC;
-$header_margin_bottom: 0 0 1rem 0;
-$control_width: 340px;
-$card_background_color: #F2F3F4;
-$form_margin: 1rem;
-$form_width: 370px;
-$el_horizontal_centering: 0 auto;
-$button_margin_right: 0 1rem 0 0;
-$preview_bc_color: #FFF;
-$preview_margin_left: 0 0 0 1rem;
-$radio_button_margin_bottom: 0 0 .5rem 0;
+@import "styles/app_constants";
 
-%flex_space_between {
-  display: flex;
-  justify-content: space-between;
-}
-
-%flex_direction_column {
-  display: flex;
-  flex-direction: column;
-}
-
-%card_bc_color_and_control_width {
-  .mat-card {
-    background-color: $card_background_color;
-
-    .form_input {
-      width: $control_width;
-    }
-  }
+.app_container {
+  width: $app_width;
+  height: $app_height;
+  margin: $el-horizontal_centering;
+  padding: $app_padding;
+  background-color: $app_bc_color;
 }

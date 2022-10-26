@@ -1,0 +1,28 @@
+$main_margin_bottom: 0 0 1rem 0;
+$header_button_margin_right: 0 1rem 0 0;
+$form_width: 370px;
+$card_background_color: #F2F3F4;
+$control_width: 340px;
+$radio_button_margin_bottom: 0 0 .5rem 0;
+$preview_margin_left: 0 0 0 1rem;
+$preview_height: 415px;
+
+%flex_space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+%flex_direction_column {
+  display: flex;
+  flex-direction: column;
+}
+
+%card_bc_color_and_control_width {
+  .mat-card {
+    background-color: $card_background_color;
+
+    .form_input {
+      width: $control_width;
+    }
+  }
+}
