@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IUserModel, IUserViewModel } from "../models/user.model";
+import { IUserModel, IUserViewModel } from "@main/app/modules/user-settings/models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataTransformService {
+export class UserTransformService {
   UserDataToViewModel(user: IUserModel): IUserViewModel {
     return {
       Name: user.name,

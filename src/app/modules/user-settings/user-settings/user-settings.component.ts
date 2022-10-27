@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from "@angular/forms";
-import { DataService } from "@main/app/modules/user-settings/services/data.service";
+import { UserDataService } from "@main/app/modules/user-settings/services/user-data.service";
 import { NameAndCountryFormComponent } from "@main/app/modules/user-settings/user-settings/components/name-and-country-form/name-and-country-form.component";
 import { OptionsAndEmailFormComponent } from "@main/app/modules/user-settings/user-settings/components/options-and-email-form/options-and-email-form.component";
 import { ZipCodeFormComponent } from "@main/app/modules/user-settings/user-settings/components/zip-code-form/zip-code-form.component";
@@ -21,10 +21,10 @@ export class UserSettingsComponent implements OnInit {
   private isFormsValid = false;
 
   constructor(
-    private readonly dataService: DataService,
+    private readonly userDataService: UserDataService,
   ) { }
   ngOnInit(): void {
-    this.User = this.dataService.GetData();
+    this.User = this.userDataService.GetUser();
   }
   ShowTab(key: any): void {
     if (key === 1) {
@@ -50,7 +50,7 @@ export class UserSettingsComponent implements OnInit {
         ...this.optionsAndEmailForm.OptionsAndEmailForm.value,
         ...this.zipCodeForm.ZipCodeForm.value
       };
-      this.dataService.SaveData(user);
+      this.userDataService.SaveUser(user);
       this.clearForms(formsList);
       this.User = user;
     } else {

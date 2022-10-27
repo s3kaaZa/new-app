@@ -5,10 +5,10 @@ import { UserSettingsComponent } from '@main/app/modules/user-settings/user-sett
 import { NameAndCountryFormComponent } from "@main/app/modules/user-settings/user-settings/components/name-and-country-form/name-and-country-form.component";
 import { OptionsAndEmailFormComponent } from "@main/app/modules/user-settings/user-settings/components/options-and-email-form/options-and-email-form.component";
 import { ZipCodeFormComponent } from "@main/app/modules/user-settings/user-settings/components/zip-code-form/zip-code-form.component";
-import { DataService } from "@main/app/modules/user-settings/services/data.service";
+import { UserDataService } from "@main/app/modules/user-settings/services/user-data.service";
 
 describe('UserSettingsComponent', () => {
-  const dataServiceSpy = jasmine.createSpyObj<DataService>('DataService', ['GetData', 'SaveData']);
+  const userDataServiceSpy = jasmine.createSpyObj<UserDataService>('DataService', ['GetUser', 'SaveUser']);
   let component: UserSettingsComponent;
   let fixture: ComponentFixture<UserSettingsComponent>;
 
@@ -23,8 +23,8 @@ describe('UserSettingsComponent', () => {
       providers: [
         FormBuilder,
         {
-          provider: DataService,
-          useValue: dataServiceSpy
+          provider: UserDataService,
+          useValue: userDataServiceSpy
         }
       ]
     })

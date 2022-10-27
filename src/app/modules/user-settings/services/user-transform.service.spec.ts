@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DataTransformService } from '@main/app/modules/user-settings/services/data-transform.service';
+import { UserTransformService } from '@main/app/modules/user-settings/services/user-transform.service';
 
 describe('DataTransformService', () => {
-  let service: DataTransformService;
+  let service: UserTransformService;
   const userFromViewModel = {
     name: 'string',
     surname: 'string',
@@ -23,7 +23,7 @@ describe('DataTransformService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DataTransformService);
+    service = TestBed.inject(UserTransformService);
   });
 
   it('should be created', () => {

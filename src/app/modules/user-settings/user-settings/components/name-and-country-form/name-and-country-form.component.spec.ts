@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { NameAndCountryFormComponent } from './name-and-country-form.component';
 import { FormBuilder } from "@angular/forms";
+
+import { NameAndCountryFormComponent } from '@main/app/modules/user-settings/user-settings/components/name-and-country-form/name-and-country-form.component';
 
 describe('NameAndCountryFormComponent', () => {
   let component: NameAndCountryFormComponent;
