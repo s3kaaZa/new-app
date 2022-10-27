@@ -5,7 +5,7 @@ import { UserTransformService } from "@main/app/modules/user-settings/services/u
 import { NameAndCountryFormComponent } from "@main/app/modules/user-settings/user-settings/components/name-and-country-form/name-and-country-form.component";
 import { OptionsAndEmailFormComponent } from "@main/app/modules/user-settings/user-settings/components/options-and-email-form/options-and-email-form.component";
 import { ZipCodeFormComponent } from "@main/app/modules/user-settings/user-settings/components/zip-code-form/zip-code-form.component";
-import { IUserViewModel } from "@main/app/modules/user-settings/models/user.model";
+import { IUserViewModel } from "@main/app/modules/user-settings/models/user-data.model";
 
 @Component({
   selector: 'app-user-settings',

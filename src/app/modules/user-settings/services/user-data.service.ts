@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUserModel, IUserViewModel } from "@main/app/modules/user-settings/models/user.model";
+import { IUserModel, IUserViewModel } from "@main/app/modules/user-settings/models/user-data.model";
 import { LocalStorageService } from "@main/app/services/local-storage.service";
 import { UserTransformService } from "@main/app/modules/user-settings/services/user-transform.service";
 
