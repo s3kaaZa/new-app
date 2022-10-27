@@ -8,7 +8,7 @@ import { ZipCodeFormComponent } from "@main/app/modules/user-settings/user-setti
 import { DataService } from "@main/app/modules/user-settings/services/data.service";
 
 describe('UserSettingsComponent', () => {
-  const dataServiceSpy = jasmine.createSpyObj<DataService>('DataService', ['GetData']);
+  const dataServiceSpy = jasmine.createSpyObj<DataService>('DataService', ['GetData', 'SaveData']);
   let component: UserSettingsComponent;
   let fixture: ComponentFixture<UserSettingsComponent>;
 
@@ -59,16 +59,33 @@ describe('UserSettingsComponent', () => {
 
   it('ShowForms should set VisibleForms as 1 or 2', () => {
     component.ShowTab(1);
-    expect(component.HideFirstTab).toBeTrue();
-    component.ShowTab(2);
+    expect(component.HideFirstTab).toBeFalse();
     expect(component.HideSecondTab).toBeTrue();
+    component.ShowTab(2);
+    expect(component.HideFirstTab).toBeTrue();
+    expect(component.HideSecondTab).toBeFalse();
   });
 
-  it('SaveData should make all forms touched', () => {
+  it('SaveData should make all forms touched when forms invalid', () => {
     component.SaveData()
     expect(component.nameAndCountryForm.NamesAndCountryForm.touched).toBeTrue();
     expect(component.optionsAndEmailForm.OptionsAndEmailForm.touched).toBeTrue();
     expect(component.zipCodeForm.ZipCodeForm.touched).toBeTrue();
+  });
+
+  it('SaveData should set User', () => {
+    component.nameAndCountryForm.NamesAndCountryForm.patchValue({Name: 'string', Surname: 'string', Country: 'string'});
+    component.optionsAndEmailForm.OptionsAndEmailForm.patchValue({Option: 'string', Email: 'string@string.com'});
+    component.zipCodeForm.ZipCodeForm.patchValue({ZipCode: 12345});
+    component.SaveData();
+    expect(component.User).toEqual({
+      Name: 'string',
+      Surname: 'string',
+      Country: 'string',
+      Option: 'string',
+      Email: 'string@string.com',
+      ZipCode: 12345
+    });
   });
 
   it('private clearForms should clear all forms', () => {
