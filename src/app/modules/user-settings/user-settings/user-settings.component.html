@@ -2,8 +2,8 @@
   <nav class="header">
     <span class="header_button_container">
       <a class="header_button main_page_button" mat-raised-button href="/" target="_self">Main</a>
-      <button class="header_button header_button_tab primary_button" mat-flat-button color="primary" (click)="ShowTab(1)">Tab 1</button>
-      <button class="header_button header_button_tab secondary_button" mat-flat-button color="primary" (click)="ShowTab(2)">Tab 2</button>
+      <button class="header_button header_button_tab primary_button" mat-flat-button color="primary" (click)="ToggleTabs(1)">Tab 1</button>
+      <button class="header_button header_button_tab secondary_button" mat-flat-button color="primary" (click)="ToggleTabs(2)">Tab 2</button>
     </span>
     <button mat-flat-button color="accent" (click)="SaveData()">Save</button>
   </nav>

@@ -46,22 +46,22 @@ describe('UserSettingsComponent', () => {
   });
 
   it('.primary_button / .secondary_button click should call ShowForms with 1 / 2)', fakeAsync(() => {
-    spyOn(component, 'ShowTab');
+    spyOn(component, 'ToggleTabs');
     const firstButton = fixture.debugElement.nativeElement.querySelector('.primary_button');
     const secondButton = fixture.debugElement.nativeElement.querySelector('.secondary_button');
     firstButton.click();
     tick();
-    expect(component.ShowTab).toHaveBeenCalledWith(1);
+    expect(component.ToggleTabs).toHaveBeenCalledWith(1);
     secondButton.click();
     tick();
-    expect(component.ShowTab).toHaveBeenCalledWith(2);
+    expect(component.ToggleTabs).toHaveBeenCalledWith(2);
   }));
 
   it('ShowForms should set VisibleForms as 1 or 2', () => {
-    component.ShowTab(1);
+    component.ToggleTabs(1);
     expect(component.HideFirstTab).toBeFalse();
     expect(component.HideSecondTab).toBeTrue();
-    component.ShowTab(2);
+    component.ToggleTabs(2);
     expect(component.HideFirstTab).toBeTrue();
     expect(component.HideSecondTab).toBeFalse();
   });

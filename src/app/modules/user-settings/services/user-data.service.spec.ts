@@ -44,9 +44,9 @@ describe('DataService', () => {
     expect(userDataService).toBeTruthy();
   });
 
-  it('SaveUser should call the SaveUserToLocalStorage method from LocalStorageService', () => {
+  it('SaveUser should call the SaveUser method from LocalStorageService', () => {
     userTransformServiceSpy.UserDataFromViewModel.and.returnValue(userFromViewModel);
-    userDataService.SaveUser(userToViewModel);
+    userDataService.SaveUser(userFromViewModel);
     expect(localStorageServiceSpy.SaveUser).toHaveBeenCalled();
   });
 
